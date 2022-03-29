@@ -20,8 +20,8 @@ public class EchoServer {
 
                 // echo client input
                 boolean done = false;
-                //while (!done && in.hasNextLine()) {
-                    while (!done) {
+                while (!done && in.hasNextLine()) {
+
                     {
                         String line = in.nextLine();
                         System.out.println("Cliente " + line);
@@ -34,14 +34,14 @@ public class EchoServer {
                         String line = in.nextLine();
                         if (line.trim().equals("1"))
                             out.println("A hora atual é: " + ZonedDateTime.now());
-                        done = false;
+
                     }
 
                     {
                         String line = in.nextLine();
                         if (line.trim().equals("2"))
                             out.println(System.getProperty("os.name"));
-                        done = false;
+
                     }
                 }
             } finally {
