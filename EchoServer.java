@@ -25,23 +25,19 @@ public class EchoServer {
                     {
                         String line = in.nextLine();
                         System.out.println("Cliente " + line);
-                        if (line.trim().equals("BYE"))
+                        if (line.trim().equals("BYE")){
                         done = true;
                         //out.println("Echo: " + line);
-                    }
-
-                    {
-                        String line = in.nextLine();
-                        if (line.trim().equals("1"))
+                        }
+                        else if (line.trim().equals("1"))
+                        {
                             out.println("A hora atual é: " + ZonedDateTime.now());
+                        }
 
-                    }
-
-                    {
-                        String line = in.nextLine();
-                        if (line.trim().equals("2"))
+                            else if (line.trim().equals("2"))
+                            {
                             out.println(System.getProperty("os.name"));
-
+                        }
                     }
                 }
             } finally {
