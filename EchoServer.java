@@ -2,10 +2,10 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.time.ZonedDateTime;
+import java.util.Random;
 
 
-
-public class EchoServer extends Thread{
+public class EchoServer{
     public static void main(String[] args) {
         try {
             ServerSocket s = new ServerSocket(8190);
@@ -19,15 +19,17 @@ public class EchoServer extends Thread{
                 out.println("Hello! Enter 1 to Actual Hour.");
                 out.println("Hello! Enter 2 to Name of System.");
                 out.println("Hello! Enter 3 to visualize the package");
+                out.println("");
 
                 Scanner in = new Scanner(inStream);
+                Random f = new Random();
 
 
 
                 // echo client input
                 boolean done = false;
                 while (!done && in.hasNextLine()) {
-
+                    int g = f.nextInt(5);
                     {
                         String line = in.nextLine();
                         System.out.println("Cliente inseriu: " + line);
@@ -41,11 +43,15 @@ public class EchoServer extends Thread{
                             else if (line.trim().equals("2")) {
                             out.println("O sistema é: "+ System.getProperty("os.name"));
 
+
+
+
                         }else if (line.trim().equals("3")) {
                             for(int pacote = 0; pacote < 5; pacote++){
+                                out.println("");
                                 out.println("Pacote "+ pacote +" enviado");
                                 wait(2000);
-                                if(pacote==2){
+                                if(pacote==g){
                                     out.println("Pacote "+ pacote +" Timeout");
                                     wait(1000);
                                     out.println("Pacote "+ pacote +" reenviado");
@@ -57,6 +63,7 @@ public class EchoServer extends Thread{
                         }else {
                                 out.println("Opção inválida");
                         }out.println("Insira outro número para uma nova operação: ");
+                            out.println("");
 
                     }
                 }
@@ -67,6 +74,11 @@ public class EchoServer extends Thread{
             e.printStackTrace();
         }
     }
+
+
+
+
+
     public static void wait(int ms)
     {
         try
